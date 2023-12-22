@@ -7,13 +7,17 @@
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 text-gray-900">
+            <div class="bg-slate-700 overflow-hidden shadow-sm sm:rounded-lg">
+                <div class="p-6 bg-slate-900">
+                    <h2 class="text-white text-lg mb-1 font-bold title-font mb-3">All Posts</h2>
+                </div>
+                <div class="p-6 text-white">
                     {{-- __("You're logged in!") --}}
                     <table class="table-auto w-full border border-slate-400 border-collapse border-spacing-7">
                         <thead>
                             <tr align="left">
                                 <th class="border border-slate-300 p-4">Id</th>
+                                <th class="border border-slate-300 p-4">User Name</th>
                                 <th class="border border-slate-300 p-4">Title</th>
                                 <th class="border border-slate-300 p-4">Description</th>
                                 <th class="border border-slate-300 p-4">Action</th>
@@ -23,6 +27,7 @@
                             @foreach ($posts as $post)
                             <tr>
                                 <td class="border border-slate-300 p-4">{{ $post->id}}</td>
+                                <td class="border border-slate-300 p-4">{{ $post->user->name}}</td>
                                 <td class="border border-slate-300 p-4">{{ $post->title}}</td>
                                 <td class="border border-slate-300 p-4">{{ $post->description}}</td>
                                 <td class="border border-slate-300 p-4 w-80 text-center">
@@ -37,6 +42,9 @@
                             @endforeach
                         </tbody>
                     </table>
+                    <div class="mt-3">
+                        {{ $posts->links() }}
+                    </div>
                 </div>
             </div>
         </div>

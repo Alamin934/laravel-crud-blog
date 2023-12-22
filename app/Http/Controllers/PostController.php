@@ -13,8 +13,8 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::all();
-        // return $posts;
+        $posts = Post::with('user')->paginate(8);
+        
         return view('dashboard', ['posts'=>$posts]);
     }
 

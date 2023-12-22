@@ -20,12 +20,14 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/add-post', [PostController::class,'create'])->name('add_post');
-Route::post('/store-post', [PostController::class,'store'])->name('store_post');
+Route::controller(PostController::class)->middleware(['auth', 'verified'])->group(function () {
+    Route::get('/dashboard', 'index')->name('dashboard');
+    Route::get('/add-post', 'create')->name('add_post');
+    Route::post('/store-post', 'store')->name('store_post');
+    Route::get('/single-post/{id}', 'show')->name('single_post');
+});
 
-Route::get('/dashboard', [PostController::class,'index'])->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::get('/single-post/{id}', [PostController::class,'show'])->name('single_post');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -34,3 +36,4 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__.'/auth.php';
+

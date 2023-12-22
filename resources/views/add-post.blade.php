@@ -10,9 +10,6 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
-                    @if (session()->has('status'))
-                    <div class="p-3 rounded-lg text-green-700 bg-green-200">{{session('status')}}</div>
-                    @endif
                     <form action="{{route('store_post')}}" method="POST">
                         @csrf
                         <h2 class="text-gray-900 text-lg mb-1 font-medium title-font">Add Post</h2>
@@ -34,6 +31,10 @@
                         </div>
                         <button type="submit"
                             class="rounded-md bg-indigo-500 px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Save</button>
+
+                        @if (session()->has('status'))
+                        <div class="p-3 mt-3 rounded-lg text-emerald-300 bg-green-200">{{session('status')}}</div>
+                        @endif
                     </form>
                 </div>
             </div>
