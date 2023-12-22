@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->string('description');
-            $table->foreignId('uesr_id')
+            $table->foreignId('user_id')
             ->constrained('users')
             ->onUpdate('cascade')
             ->onDelete('cascade');

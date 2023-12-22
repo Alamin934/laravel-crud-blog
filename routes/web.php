@@ -3,6 +3,8 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\PostController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -17,6 +19,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/add-post', [PostController::class,'create'])->name('add_post');
+Route::post('/store-post', [PostController::class,'store'])->name('store_post');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
