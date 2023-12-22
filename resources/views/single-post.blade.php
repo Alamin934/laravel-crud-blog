@@ -20,21 +20,20 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($posts as $post)
                             <tr>
                                 <td class="border border-slate-300 p-4">{{ $post->id}}</td>
                                 <td class="border border-slate-300 p-4">{{ $post->title}}</td>
                                 <td class="border border-slate-300 p-4">{{ $post->description}}</td>
                                 <td class="border border-slate-300 p-4 w-80 text-center">
-                                    <a href="{{route('single_post', $post->id)}}"
-                                        class="text-white bg-indigo-500 border-0 py-2.5 px-6 focus:outline-none hover:bg-indigo-600 rounded">View</a>
+                                    <a href="{{route('dashboard')}}"
+                                        class="text-white bg-indigo-500 border-0 py-2.5 px-6 focus:outline-none hover:bg-indigo-600 rounded">All
+                                        Post</a>
                                     <a href=""
                                         class="text-white bg-amber-400 border-0 py-2.5 px-6 focus:outline-none hover:bg-indigo-600 rounded">Edit</a>
                                     <a href=""
                                         class="text-white bg-red-600 border-0 py-2.5 px-6 focus:outline-none hover:bg-indigo-600 rounded">Delete</a>
                                 </td>
                             </tr>
-                            @endforeach
                         </tbody>
                     </table>
                 </div>

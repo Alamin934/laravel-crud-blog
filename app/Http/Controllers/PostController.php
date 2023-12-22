@@ -13,7 +13,9 @@ class PostController extends Controller
      */
     public function index()
     {
-        //
+        $posts = Post::all();
+        // return $posts;
+        return view('dashboard', ['posts'=>$posts]);
     }
 
     /**
@@ -47,7 +49,9 @@ class PostController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $post = Post::find($id);
+        // return $post;
+        return view('single-post', ['post'=>$post]);
     }
 
     /**
