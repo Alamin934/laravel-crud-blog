@@ -25,6 +25,9 @@ Route::controller(PostController::class)->middleware(['auth', 'verified'])->grou
     Route::get('/add-post', 'create')->name('add_post');
     Route::post('/store-post', 'store')->name('store_post');
     Route::get('/single-post/{id}', 'show')->name('single_post');
+    Route::get('/edit-post/{id}', 'edit')->name('edit');
+    Route::put('/update-post/{id}', 'update')->name('update');
+    Route::get('/delete-post/{id}', 'destroy')->name('delete');
 });
 
 

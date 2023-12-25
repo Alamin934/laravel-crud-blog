@@ -14,6 +14,10 @@
                 <div class="p-6 text-white">
                     {{-- __("You're logged in!") --}}
                     <table class="table-auto w-full border border-slate-400 border-collapse border-spacing-7">
+                        @if (session()->has('status'))
+                        <div class="p-3 mb-3 rounded-lg text-black bg-green-200">{{session('status') }}
+                        </div>
+                        @endif
                         <thead>
                             <tr align="left">
                                 <th class="border border-slate-300 p-4">Id</th>
@@ -33,9 +37,9 @@
                                 <td class="border border-slate-300 p-4 w-80 text-center">
                                     <a href="{{route('single_post', $post->id)}}"
                                         class="text-white bg-indigo-500 border-0 py-2.5 px-6 focus:outline-none hover:bg-indigo-600 rounded">View</a>
-                                    <a href=""
+                                    <a href="{{route('edit', $post->id)}}"
                                         class="text-white bg-amber-400 border-0 py-2.5 px-6 focus:outline-none hover:bg-indigo-600 rounded">Edit</a>
-                                    <a href=""
+                                    <a href="{{route('delete', $post->id)}}"
                                         class="text-white bg-red-600 border-0 py-2.5 px-6 focus:outline-none hover:bg-indigo-600 rounded">Delete</a>
                                 </td>
                             </tr>
