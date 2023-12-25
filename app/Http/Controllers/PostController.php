@@ -11,10 +11,10 @@ class PostController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $posts = Post::with('user')->paginate(8);
-        
+        $user = $request->user();
+        $posts = Post::with('user')->where('user_id', $user->id)->paginate(8);        
         return view('dashboard', ['posts'=>$posts]);
     }
 
