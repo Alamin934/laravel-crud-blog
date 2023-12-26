@@ -20,9 +20,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::controller(PostController::class)->middleware(['auth', 'verified'])->group(function () {
+Route::controller(PostController::class)->middleware(['auth'])->group(function () {
     Route::get('/dashboard', 'index')->name('dashboard');
-    Route::get('/add-post', 'create')->name('add_post');
+    Route::get('/add-post', 'create')->middleware(['can:isAdmin'])->name('add_post');
     Route::post('/store-post', 'store')->name('store_post');
     Route::get('/single-post/{id}', 'show')->name('single_post');
     Route::get('/edit-post/{id}', 'edit')->name('edit');

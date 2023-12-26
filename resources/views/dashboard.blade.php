@@ -24,7 +24,9 @@
                                 <th class="border border-slate-300 p-4">User Name</th>
                                 <th class="border border-slate-300 p-4">Title</th>
                                 <th class="border border-slate-300 p-4">Description</th>
+                                @can('isAdmin')
                                 <th class="border border-slate-300 p-4">Action</th>
+                                @endcan
                             </tr>
                         </thead>
                         <tbody>
@@ -34,6 +36,7 @@
                                 <td class="border border-slate-300 p-4">{{ $post->user->name}}</td>
                                 <td class="border border-slate-300 p-4">{{ $post->title}}</td>
                                 <td class="border border-slate-300 p-4">{{ $post->description}}</td>
+                                @can('isAdmin')
                                 <td class="border border-slate-300 p-4 w-80 text-center">
                                     <a href="{{route('single_post', $post->id)}}"
                                         class="text-white bg-indigo-500 border-0 py-2.5 px-6 focus:outline-none hover:bg-indigo-600 rounded">View</a>
@@ -42,6 +45,7 @@
                                     <a href="{{route('delete', $post->id)}}"
                                         class="text-white bg-red-600 border-0 py-2.5 px-6 focus:outline-none hover:bg-indigo-600 rounded">Delete</a>
                                 </td>
+                                @endcan
                             </tr>
                             @endforeach
                         </tbody>

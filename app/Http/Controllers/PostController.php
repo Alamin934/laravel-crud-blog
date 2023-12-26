@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 use App\Models\User;
 use App\Models\Post;
+use App\Gates\AdminGates;
 
 class PostController extends Controller
 {
@@ -60,6 +62,9 @@ class PostController extends Controller
     public function edit(string $id)
     {
         $post = Post::find($id);
+        if(Gate::denies('isAdmin', $post)){
+            abort(403);
+        }
         return view('edit-post', ['epost'=>$post]);
     }
 
@@ -82,6 +87,9 @@ class PostController extends Controller
     public function destroy(string $id)
     {
         $post = Post::find($id);
+        if(Gate::denies('isAdmin', $post)){
+            abort(403);
+        }
         $post->delete();
     return redirect()->route('dashboard')->with('status', 'Post Deleted Successfully');
     }
